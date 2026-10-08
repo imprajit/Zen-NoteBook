@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Zen Notebook</title>
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="favicon.svg"
+    >
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo">
+                Zen <span>Notebook</span>
+            </div>
+
+            <nav class="navigation">
+                <button
+                    class="nav-button active"
+                    id="notes-button"
+                >
+                    <span>📝</span>
+                    Notes
+                </button>
+                <button
+                    class="nav-button"
+                    id="favorites-button"
+                >
+                    <span>★</span>
+                    Favorites
+                </button>
+                <button
+                    class="nav-button"
+                    id="trash-button"
+                >
+                    <span>🗑</span>
+                    Trash
+                </button>
+            </nav>
+            <div class="motto">
+                <p>Less noise.</p>
+                <p>More thought.</p>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-box">
+                    <label for="search">
+                        Search notes
+                    </label>
+                    <input
+                        type="search"
+                        id="search"
+                        placeholder="Search notes..."
+                    >
+                </div>
+                <button
+                    class="new-note-button"
+                    id="new-note-button"
+                >
+                    <span>＋</span>
+                    New note
+                </button>
+            </header>
+            <section class="note-area">
+                <div
+                    class="notes-list"
+                    id="notes-list"
+                >
+                    <div class="notes-list-header">
+                        <h1 id="list-title">
+                            Notes
+                        </h1>
+                        <p id="list-subtitle">
+                            Your thoughts, kept quietly.
+                        </p>
+                    </div>
+                    <div
+                        id="note-files"
+                        class="note-files"
+                    ></div>
+
+                </div>
+                <div
+                    class="note-view"
+                    id="note-view"
+                >
+                    <button
+                        class="back-button"
+                        id="back-button"
+                    >
+                        ← Back to notes
+                    </button>
+                    <div
+                        class="note-date"
+                        id="note-date"
+                    >
+                        NOTE
+                    </div>
+                    <h1
+                        class="note-title"
+                        id="note-title"
+                    ></h1>
+                    <div
+                        class="note-content"
+                        id="note-content"
+                    ></div>
+                    <div class="note-actions">
+                        <button
+                            class="favorite-button"
+                            id="favorite-button"
+                        >
+                            ☆ Favorite
+                        </button>
+                        <button
+                            class="edit-button"
+                            id="edit-button"
+                        >
+                            Edit note
+                        </button>
+                        <button
+                            class="delete-button"
+                            id="delete-button"
+                        >
+                            Delete
+                        </button>
+                        <button
+                            class="restore-button"
+                            id="restore-button"
+                        >
+                            Restore
+                        </button>
+                        <button
+                            class="delete-forever-button"
+                            id="delete-forever-button"
+                        >
+                            Delete forever
+                        </button>
+                    </div>
+                </div>
+                <div
+                    class="note-editor"
+                    id="note-editor"
+                >
+                    <div class="editor-top">
+                        <button
+                            class="editor-back"
+                            id="editor-back"
+                        >
+                            ← Back
+                        </button>
+                        <button
+                            class="save-note-button"
+                            id="save-note-button"
+                        >
+                            Save
+                        </button>
+                    </div>
+                    <input
+                        type="text"
+                        id="editor-title"
+                        class="editor-title"
+                        placeholder="Note title..."
+                    >
+                    <textarea
+                        id="editor-content"
+                        class="editor-content"
+                        placeholder="Start writing..."
+                    ></textarea>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- CONFIRMATION MODAL -->
+    <div
+        id="confirm-overlay"
+        style="
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 9999;
+            padding: 20px;
+        "
+    >
+        <div
+            style="
+                width: min(420px, 100%);
+                background: #111111;
+                border: 1px solid #2a2a2a;
+                border-radius: 18px;
+                padding: 28px;
+                box-sizing: border-box;
+            "
+        >
+            <h2
+                id="confirm-title"
+                style="
+                    margin: 0 0 10px;
+                    color: #ffffff;
+                    font-size: 22px;
+                    font-weight: 500;
+                "
+            >
+                Are you sure?
+            </h2>
+            <p
+                id="confirm-message"
+                style="
+                    margin: 0;
+                    color: #999999;
+                    font-size: 15px;
+                    line-height: 1.6;
+                "
+            >
+                Please confirm this action.
+            </p>
+            <div
+                style="
+                    display: flex;
+                    justify-content: flex-end;
+                    gap: 10px;
+                    margin-top: 26px;
+                "
+            >
+                <button
+                    type="button"
+                    id="confirm-cancel"
+                    onclick="window.closeConfirm(false)"
+                    style="
+                        border: none;
+                        border-radius: 10px;
+                        padding: 10px 16px;
+                        background: #222222;
+                        color: #dddddd;
+                        font-size: 14px;
+                        cursor: pointer;
+                    "
+                >
+                    Cancel
+                </button>
+                <button
+                    type="button"
+                    id="confirm-ok"
+                    onclick="window.closeConfirm(true)"
+                    style="
+                        border: none;
+                        border-radius: 10px;
+                        padding: 10px 16px;
+                        background: #ffffff;
+                        color: #000000;
+                        font-size: 14px;
+                        cursor: pointer;
+                    "
+                >
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

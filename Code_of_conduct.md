@@ -49,11 +49,12 @@ Maintainers may reject changes that do not fit Zen Notebook's purpose, introduce
 
 ## Reporting a Problem
 
-If you experience or witness unacceptable behavior, contact the project maintainer privately through the contact information provided in the repository.
+For general project questions and technical issues, please use GitHub Discussions or Issues.
 
-Include relevant details so the concern can be reviewed fairly. Please avoid sharing another person's private information publicly.
+If a concern requires privacy, do not post personal information publicly. Contact the project maintainer through an available private communication method.
 
-The maintainer will review reports and take appropriate action based on the circumstances.
+All reports will be reviewed fairly and respectfully.
+
 
 ## Consequences
 

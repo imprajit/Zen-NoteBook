@@ -21,6 +21,7 @@ Zen Notebook uses several technologies, each serving a specific purpose:
 | **Spring Boot** | Framework for the Java backend                                           |
 | **H2**          | Local database                                                           |
 | **Maven**       | Project build and dependency management                                  |
+| **C#**          | For launching the app flawlessly
 
 These technologies work together to provide a focused notebook experience.
 

@@ -96,7 +96,7 @@ It's trying to make opening a notebook feel simple again.
 * **HTML, CSS, and JavaScript** — user interface
 * **H2 Database** — local data storage
 * **Maven** — build management
-* **C#** - App launch
+* **C#** - App launcher
 
 ---
 
